@@ -1,0 +1,120 @@
+:root {
+  color-scheme: dark;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #000;
+  color: #fff;
+  -webkit-text-size-adjust: 100%;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+#station {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  touch-action: none;
+}
+
+.form {
+  position: relative;
+  /* Fit the entire form in either orientation, with no stretching or cropping. */
+  width: min(100vw, calc(100vh * var(--media-width) / var(--media-height)));
+  width: min(
+    calc(100vw - env(safe-area-inset-left) - env(safe-area-inset-right)),
+    calc((100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom)) * var(--media-width) / var(--media-height))
+  );
+  aspect-ratio: var(--media-width) / var(--media-height);
+  overflow: hidden;
+  background: #e7e8e5;
+}
+
+#sign-image, #signature, #scare {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#sign-image { pointer-events: none; z-index: 3; }
+#signature { touch-action: none; cursor: crosshair; z-index: 4; }
+
+#scare {
+  /* Decode video and play audio, but present every frame through the canvas.
+     Keep the native player invisible for its entire lifecycle. */
+  opacity: 0;
+  pointer-events: none;
+  object-fit: contain;
+  z-index: 2;
+}
+
+.image-button {
+  position: absolute;
+  z-index: 5;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.image-button:disabled { cursor: default; }
+.image-button:focus-visible { outline: 4px solid #111; outline-offset: -6px; }
+.cancel { top: 0; left: 0; width: 22.2%; height: 11.8%; }
+.clear { bottom: 0; left: 0; width: 36.7%; height: 12%; }
+.accept { bottom: 0; right: 0; width: 27.2%; height: 12%; }
+
+.setup, .no-script {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #14101def;
+}
+
+[hidden] { display: none !important; }
+
+.setup-card { width: min(100%, 410px); text-align: center; }
+.eyebrow { color: #bdb0dc; font-size: 12px; font-weight: 650; letter-spacing: .18em; }
+h1 { margin: 16px 0; font-size: clamp(28px, 5vw, 36px); letter-spacing: -.04em; }
+#setup-message { color: #d0cbd9; line-height: 1.6; min-height: 52px; }
+
+.start {
+  width: 100%;
+  min-height: 58px;
+  margin: 16px 0 24px;
+  border: 0;
+  border-radius: 12px;
+  background: #f47828;
+  color: #160c07;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.start:disabled { opacity: .55; cursor: wait; }
+.start:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.fullscreen { display: inline-flex; align-items: center; gap: 10px; color: #d0cbd9; font-size: 15px; }
+.fullscreen input { width: 18px; height: 18px; accent-color: #f47828; }
+.build-version { display: block; margin-top: 24px; color: #bdb0dc; font-size: 12px; }

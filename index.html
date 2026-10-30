@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Signature">
+    <meta name="theme-color" content="#000000">
+    <title>Signature</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="styles.css?v=c732e4085ee963c6">
+    <script src="config.js?v=a0ae8ea7c5b70466" defer></script>
+    <script src="app.js?v=9a12cc0d27ff4012" defer></script>
+  </head>
+  <body>
+    <main id="station" aria-label="Delivery signature">
+      <div id="form" class="form" style="--media-width: 2360; --media-height: 1640">
+        <img id="sign-image" src="scaled_jumpscare_static.png?v=aa81a1b2896ce8a8" width="2360" height="1640" alt="Delivery signature form. Sign above the line." draggable="false">
+        <canvas id="signature" width="2360" height="1640" aria-label="Draw your signature with a finger, stylus, or mouse"></canvas>
+        <button id="cancel" class="image-button cancel" aria-label="Cancel signature" disabled></button>
+        <button id="clear" class="image-button clear" aria-label="Clear signature" disabled></button>
+        <button id="accept" class="image-button accept" aria-label="Accept signature" disabled></button>
+        <video id="scare" width="2360" height="1640" preload="auto" playsinline webkit-playsinline disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+      </div>
+    </main>
+
+    <section id="setup" class="setup" aria-labelledby="setup-title">
+      <div class="setup-card">
+        <p class="eyebrow">SIGNATURE STATION</p>
+        <h1 id="setup-title">Ready for a signature?</h1>
+        <p id="setup-message" role="status">Tap Start, then hand over the iPad.</p>
+        <button id="start" class="start" disabled>Loading…</button>
+        <label class="fullscreen"><input id="fullscreen" type="checkbox" checked> Use full screen</label>
+        <small id="build-version" class="build-version">Build 5b8f6591</small>
+      </div>
+    </section>
+    <noscript><div class="no-script">Enable JavaScript to use the signature pad.</div></noscript>
+  </body>
+</html>
